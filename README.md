@@ -1,0 +1,2 @@
+# Hacking-a-Wireless-Car-Keyfob-using-a-Replay-Attack
+Hacking a Wireless Car Keyfob using a Replay Attack demonstrates how insecure RF communication can be exploited by capturing and retransmitting signals to unlock vehicles. This project analyzes vulnerabilities in keyless entry systems, implements signal capture and replay, and highlights the need for secure encryption and rolling code mechanisms.
