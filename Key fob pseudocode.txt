@@ -1,0 +1,76 @@
+PSEUDOCODE:
+For Main Attack component
+BEGIN
+Initialize libraries (RCSwitch, EEPROM, LCD)
+Configure RF receiver & transmitter pins
+Initialize LCD display with welcome message
+Retrieve stored RF signal from EEPROM
+LOOP
+Display hacking status on LCD
+IF "Store Button" is pressed THEN
+Capture current RF signal
+Save the signal to EEPROM
+Display stored value on LCD
+15
+Buzz to confirm
+ENDIF
+IF "Transmit Button" is pressed THEN
+Retrieve stored signal
+Transmit the signal twice
+Display transmission status on LCD
+Buzz to confirm
+ENDIF
+IF "Reset Button" is pressed THEN
+Reset device
+Display reset message
+ENDIF
+IF a new RF signal is received THEN
+Display hacked frequency on LCD
+Buzz alert
+ENDIF
+IF Serial input "read" is received THEN
+Display stored RF signal on LCD
+Buzz to confirm
+ELSE
+Print "Invalid Command"
+ENDIF
+END LOOP
+END
+RECEIVER COMPONENT(CAR UNLOCKING SYSTEM)
+BEGIN
+Initialize RF Receiver on pin #2
+Configure relay and LED pins
+Set default states (relay and LED OFF)
+LOOP
+IF RF signal is received THEN
+Compare received signal with stored ON/OFF codes
+IF signal matches "Unlock Code" THEN
+Activate relay (unlock car)
+16
+Display message "Car Unlocked"
+Wait 2 seconds
+Deactivate relay
+ENDIF
+IF signal matches "LED ON Code" THEN
+Turn LED ON
+Wait 2 seconds
+Turn LED OFF
+ENDIF
+Reset RF receiver availability
+ENDIF
+END LOOP
+END
+TRANSMITTER COMPONENT(MULTI FREQUENCY EMITTER)
+BEGIN
+Initialize RF Transmitter on pin #10
+Configure button and buzzer pins
+LOOP
+IF Button is Pressed THEN
+Generate 3 unique random rolling codes
+Transmit each code with a delay of 200ms
+Display sent codes on Serial Monitor
+Buzz to confirm transmission
+Update rolling code value for next transmission
+ENDIF
+END LOOP
+END
